@@ -1,0 +1,67 @@
+﻿@model Movies_Alexandra_marian.Models.Distribution
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit the Distribution</h1>
+
+<h4>Distribution</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="DistributionName" class="control-label"></label>
+                <input asp-for="DistributionName" class="form-control" />
+                <span asp-validation-for="DistributionName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Adress" class="control-label"></label>
+                <input asp-for="Adress" class="form-control" />
+                <span asp-validation-for="Adress" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <table>
+                        <tr>
+                            @{
+                                int cnt = 0;
+                                List<Movies_Alexandra_marian.Models.MovieViewModels.DistributedMovieData> movies =ViewBag.Movies;
+                                foreach (var movie in movies)
+                                {
+                                    if (cnt++ % 3 == 0)
+                                    {
+                                    @:</tr><tr>
+                                    }
+                                    @:<td>
+                                        <input type="checkbox"
+                                               name="selectedMovies"
+                                               value="@movie.MovieID"
+                                               @(Html.Raw(movie.IsDistributed ?
+                                        "checked=\"checked\"" : "")) />
+                                        @movie.MovieID @: @movie.Title
+                                    @:</td>
+                                }
+                             @:</tr>
+                             }
+                         </table>
+                    </div>
+                </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

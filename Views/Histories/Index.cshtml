@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Movies_Alexandra_marian.Models.History>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Watch History</h1>
+
+<p>
+    <a asp-action="Create">Add a new Watch History</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.CustomerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie.ID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.HistoryID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.HistoryID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.HistoryID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

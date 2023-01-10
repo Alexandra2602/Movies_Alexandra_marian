@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Movies_Alexandra_marian.Models.MovieViewModels.HistoryGroup>
+@{
+    ViewData["Title"] = "Watched Movies Statistics";
+}
+<h2>Watched Movies Statistics</h2>
+<table>
+    <tr>
+        <th>
+            Watch Date
+        </th>
+        <th>
+        </th>
+        <th>
+            Watched Movies
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+            </td>
+            <td>
+                @item.MovieCount
+            </td>
+        </tr>
+    }
+</table>

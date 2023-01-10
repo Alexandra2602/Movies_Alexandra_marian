@@ -14,6 +14,6 @@ namespace Movies_Alexandra_marian.Models
 
         public ICollection<History>? Histories { get; set; }
 
-        //public ICollection<PublishedBook> PublishedBooks { get; set; }
+        public ICollection<DistributedMovie>? DistributedMovies { get; set; }
     }
 }

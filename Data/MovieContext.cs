@@ -10,8 +10,8 @@ namespace Movies_Alexandra_marian.Data
         public DbSet<History> Histories { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Director> Directors { get; set; }
-        //public DbSet<Publisher> Publishers { get; set; }
-        //public DbSet<PublishedBook> PublishedBooks { get; set; }
+        public DbSet<Distribution> Distributions { get; set; }
+        public DbSet<DistributedMovie> DistributedMovies { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -20,9 +20,10 @@ namespace Movies_Alexandra_marian.Data
             modelBuilder.Entity<History>().ToTable("History");
             modelBuilder.Entity<Movie>().ToTable("Movie");
             modelBuilder.Entity<Director>().ToTable("Director");
-            //modelBuilder.Entity<PublishedBook>().ToTable("PublishedBook");
-            //modelBuilder.Entity<PublishedBook>()
-            //.HasKey(c => new { c.BookID, c.PublisherID });//configureaza cheia primara compusa
+            modelBuilder.Entity<Distribution>().ToTable("Distribution");
+            modelBuilder.Entity<DistributedMovie>().ToTable("DistributedMovie");
+            modelBuilder.Entity<DistributedMovie>()
+            .HasKey(c => new { c.MovieID, c.DistributionID });//configureaza cheia primara compusa
 
         }
     }

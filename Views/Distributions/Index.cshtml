@@ -1,0 +1,115 @@
+﻿@model Movies_Alexandra_marian.Models.MovieViewModels.DistributionIndexData
+@{
+    ViewData["Title"] = "Distributions";
+}
+
+<h1>Distributions</h1>
+
+<p>
+    <a asp-action="Create">Add a new Distribution</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Distribution Name</th>
+            <th>Adress</th>
+            <th>Movies</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Distributions) 
+    {
+            string selectedRow = "";
+            if (item.ID == (int?)ViewData["DistributionID"])
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.DisplayFor(modelItem => item.DistributionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adress)
+                </td>
+
+                <td>
+                    @{
+                        foreach (var movie in item.DistributedMovies)
+                        {
+                            @movie.Movie.ID @: @movie.Movie.Title <br />
+                        }
+                    }
+                </td>
+                <td>
+                    <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Model.Movies != null)
+{
+    <h3>Movies distributed by the selected Distribution</h3>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Director</th>
+            
+        </tr>
+        @foreach (var item in Model.Movies)
+        {
+            string selectedRow = "";
+            if (item.ID == (int?)ViewData["MovieID"])
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.ActionLink("Select", "Index", new { movieID = item.ID })
+                </td>
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    @item.Director
+                </td>
+            </tr>
+        }
+    </table>
+}
+@if (Model.Histories != null)
+{
+    <h3> Customers that watched this Movie</h3>
+    <table class="table">
+        <tr>
+            <th> Name</th>
+            <th> Adress</th>
+            <th> Birth Date</th>
+        </tr>
+        @foreach (var item in Model.Histories)
+        {
+            string selectedRow = "";
+            if (item.MovieID == (int?)ViewData["MovieID"])
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @item.Customer.Name
+                </td>
+                <td>
+                    @item.Customer.Adress
+                </td>
+                <td>
+                    @item.Customer.BirthDate
+                </td>
+            </tr>
+        }
+    </table>
+}
+

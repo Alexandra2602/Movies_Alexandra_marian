@@ -14,7 +14,12 @@ namespace Movies_Alexandra_marian.Data
                 {
                     return; // BD a fost creata anterior
                 }
+                if (context.Customers.Any())
+                {
+                    return; // BD a fost creata anterior
+                }
                 context.SaveChanges();
+                
                 /*
                  //!!Atentie in tabelel Books si Authors au fost introduse dare in laboratorul anterior.Ne vom asigura ca datele pe care dorim sa le introducem in Orders, Publishers si PublishedBook sunt consistente
                  var orders = new Order[]

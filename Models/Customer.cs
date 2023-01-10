@@ -6,6 +6,6 @@
         public string Name { get; set; }
         public string Adress { get; set; }
         public DateTime BirthDate { get; set; }
-        public ICollection<History> Histories { get; set; }
+        public ICollection<History>? Histories { get; set; }
     }
 }
