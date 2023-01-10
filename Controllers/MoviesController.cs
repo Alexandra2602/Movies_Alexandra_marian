@@ -89,7 +89,7 @@ namespace Movies_Alexandra_marian.Controllers
         // GET: Movies/Create
         public IActionResult Create()
         {
-            ViewData["DirectorID"] = new SelectList(_context.Directors, "DirectorID", "DirectorID");
+            ViewData["LastName"] = new SelectList(_context.Directors, "DirectorID", "LastName");
             return View();
         }
 
@@ -133,7 +133,7 @@ namespace Movies_Alexandra_marian.Controllers
             {
                 return NotFound();
             }
-            ViewData["DirectorID"] = new SelectList(_context.Directors, "DirectorID", "DirectorID", movie.DirectorID);
+            ViewData["LastName"] = new SelectList(_context.Directors, "DirectorID", "LastName", movie.DirectorID);
             return View(movie);
         }
 
