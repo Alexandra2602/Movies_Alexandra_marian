@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Movies_Alexandra_marian.Data;
 using Movies_Alexandra_marian.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Movies_Alexandra_marian.Controllers
 {
+    [Authorize(Roles = "Employee")]
     public class MoviesController : Controller
     {
         private readonly MovieContext _context;
@@ -20,6 +22,7 @@ namespace Movies_Alexandra_marian.Controllers
         }
 
         // GET: Movies
+        [AllowAnonymous]
         public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
             ViewData["CurrentSort"] = sortOrder;
@@ -65,6 +68,7 @@ namespace Movies_Alexandra_marian.Controllers
         }
 
         // GET: Movies/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Movies == null)

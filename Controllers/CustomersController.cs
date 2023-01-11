@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Movies_Alexandra_marian.Data;
 using Movies_Alexandra_marian.Models;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace Movies_Alexandra_marian.Controllers
 {
+    [Authorize(Policy = "StaffManager")]
     public class CustomersController : Controller
     {
         private readonly MovieContext _context;
