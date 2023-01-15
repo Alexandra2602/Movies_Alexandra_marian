@@ -3,17 +3,17 @@
     ViewData["Title"] = "Distributions";
 }
 
-<h1>Distributions</h1>
+<h1>Distribution Companies</h1>
 
 <p>
-    <a asp-action="Create">Add a new Distribution</a>
+    <a asp-action="Create">Add a new Distribution Company</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>Distribution Name</th>
-            <th>Adress</th>
-            <th>Movies</th>
+            <th>Distribution Company</th>
+            <th>Country</th>
+            <th>Title of the movies</th>
             <th></th>
         </tr>
     </thead>
@@ -37,7 +37,7 @@
                     @{
                         foreach (var movie in item.DistributedMovies)
                         {
-                            @movie.Movie.ID @: @movie.Movie.Title <br />
+                             @movie.Movie.Title <br />
                         }
                     }
                 </td>
@@ -76,7 +76,7 @@
                     @item.Title
                 </td>
                 <td>
-                    @item.Director
+                    
                 </td>
             </tr>
         }

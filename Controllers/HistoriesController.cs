@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Movies_Alexandra_marian.Data;
 using Movies_Alexandra_marian.Models;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Movies_Alexandra_marian.Controllers
 {
@@ -49,8 +50,8 @@ namespace Movies_Alexandra_marian.Controllers
         // GET: Histories/Create
         public IActionResult Create()
         {
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "CustomerID");
-            ViewData["MovieID"] = new SelectList(_context.Movies, "ID", "ID");
+            ViewData["CustomerName"] = new SelectList(_context.Customers, "CustomerID", "Name");
+            ViewData["MovieTitle"] = new SelectList(_context.Movies, "ID", "Title");
             return View();
         }
 
@@ -67,8 +68,8 @@ namespace Movies_Alexandra_marian.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "CustomerID", history.CustomerID);
-            ViewData["MovieID"] = new SelectList(_context.Movies, "ID", "ID", history.MovieID);
+            ViewData["CustomerName"] = new SelectList(_context.Customers, "CustomerID", "Name", history.CustomerID);
+            ViewData["MovieTitle"] = new SelectList(_context.Movies, "ID", "Title", history.MovieID);
             return View(history);
         }
 
@@ -85,8 +86,8 @@ namespace Movies_Alexandra_marian.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "CustomerID", history.CustomerID);
-            ViewData["MovieID"] = new SelectList(_context.Movies, "ID", "ID", history.MovieID);
+            ViewData["CustomerName"] = new SelectList(_context.Customers, "CustomerID", "Name", history.CustomerID);
+            ViewData["MovieTitle"] = new SelectList(_context.Movies, "ID", "Title", history.MovieID);
             return View(history);
         }
 
@@ -122,8 +123,8 @@ namespace Movies_Alexandra_marian.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customers, "CustomerID", "CustomerID", history.CustomerID);
-            ViewData["MovieID"] = new SelectList(_context.Movies, "ID", "ID", history.MovieID);
+            ViewData["CustomerName"] = new SelectList(_context.Customers, "CustomerID", "Name", history.CustomerID);
+            ViewData["MovieTitle"] = new SelectList(_context.Movies, "ID", "Title", history.MovieID);
             return View(history);
         }
 

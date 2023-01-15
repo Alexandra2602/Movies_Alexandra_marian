@@ -153,7 +153,9 @@ namespace Movies_Alexandra_marian.Controllers
                 return NotFound();
             }
 
-            var movieToUpdate = await _context.Movies.FirstOrDefaultAsync(s => s.ID == id);
+            var movieToUpdate = await _context.Movies
+                .Include(d=>d.Director)
+                .FirstOrDefaultAsync(s => s.ID == id);
 
             if (await TryUpdateModelAsync<Movie>(
                 movieToUpdate,

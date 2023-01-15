@@ -17,10 +17,16 @@
             @Html.DisplayFor(model => model.Title)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Director)
+           Director's First Name
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Director.DirectorID)
+            @Html.DisplayFor(model => model.Director.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            Director's Last Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Director.LastName)
         </dd>
 
         <dt class="col-sm-2">
@@ -29,8 +35,8 @@
         <dd class="col-sm-10">
             <table class="table">
                 <tr>
-                    <th>Customer</th>
-                    <th>Order Date</th>
+                    <th>Watcher</th>
+                    <th>Watch Date</th>
                 </tr>
                 @foreach (var item in Model.Histories)
                 {

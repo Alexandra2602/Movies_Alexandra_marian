@@ -32,6 +32,7 @@ namespace Movies_Alexandra_marian.Controllers
             .ThenInclude(i => i.Movie)
              .ThenInclude(i => i.Histories)
              .ThenInclude(i => i.Customer)
+            
              .AsNoTracking()
              .OrderBy(i => i.DistributionName)
              .ToListAsync();
