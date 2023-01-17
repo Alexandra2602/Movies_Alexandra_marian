@@ -26,6 +26,14 @@ builder.Services.Configure<IdentityOptions>(options => {
     options.Lockout.MaxFailedAccessAttempts = 3;
     options.Lockout.AllowedForNewUsers = true;
 });
+builder.Services.Configure<IdentityOptions>(options => {
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequiredLength = 7;
+});
+
 
 builder.Services.AddAuthorization(opts => {
     opts.AddPolicy("OnlyStaff", policy => {
